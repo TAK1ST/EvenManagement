@@ -1,4 +1,4 @@
-package models;
+package eventmanagement.models;
 
 import java.io.Serializable;
 import java.time.LocalDate;
