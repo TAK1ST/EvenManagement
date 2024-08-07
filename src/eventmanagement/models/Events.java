@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 public class Events implements Serializable {
-
     protected static final long serialVersionUID = 1L;
     protected String id;
     protected String name;
