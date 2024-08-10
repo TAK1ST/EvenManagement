@@ -13,8 +13,7 @@ public class Events implements Serializable {
     protected boolean status;
 
     public Events() {
-        // Khởi tạo mặc định
-        this("","", LocalDate.now(), "", 0, false);
+
     }
     public Events(String id,String name, LocalDate eventDate, String location, int number_of_attendees, boolean status)
     {

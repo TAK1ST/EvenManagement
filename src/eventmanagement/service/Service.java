@@ -3,44 +3,45 @@ package eventmanagement.service;
 import java.time.LocalDate;
 import java.util.Scanner;
 
+import eventmanagement.utils.DateUtil;
 import eventmanagement.utils.ValidatedInput;
 
 public class Service {
+	private static String name;
+	private static String location;
+
 	// create new Event
 	public static void createEvent(Scanner sc) {
-		int id = 0;
-		String name;
-		LocalDate eventDate = ValidatedInput.inputEventDate();
-		String location;
-		int number_of_attendees;
+		int id = ValidatedInput.getID();
+		name = null;
+		LocalDate eventDate = DateUtil.inputEventDate();
+		location = null;
+		Integer number_of_attendees = ValidatedInput.numberOfAttendence(sc);
 		boolean status = ValidatedInput.inputStatus();
-		while (true) {
-			// need to fix id
-			System.out.println("Enter id:" + id);
+		System.out.println("Event id:" + id);
 
-			System.out.println("Enter name:");
+		System.out.println("Enter name:");
+		if (name == null)
+		{
 			name = sc.nextLine();
-			if (name == null) {
-				continue;
-			}
-
-			// Print formatted eventDate
-			System.out.println(eventDate);
-
-			System.out.println("Enter location:");
-			location = sc.nextLine();
-			if (location == null) {
-				continue;
-			}
-
-			System.out.println("Enter number_of_attendees :");
-			number_of_attendees = sc.nextInt();
-			if (number_of_attendees <= 0) {
-				continue;
-			}
-			//print status
-			System.out.println(status);
-			
 		}
+
+		// Print eventDate
+		System.out.println(eventDate);
+
+		// print location
+		System.out.println("Enter location:");
+		if (location == null)
+		{
+			location = sc.nextLine();
+		}
+
+		// print number of attendees
+		System.out.println("Enter number_of_attendees :");
+		System.out.println(number_of_attendees);
+
+		// print status
+		System.out.println(status);
+
 	}
 }
