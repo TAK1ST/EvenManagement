@@ -9,55 +9,55 @@ public class ValidatedInput {
 		int id;
 		Random random = new Random();
 		id = random.nextInt(100000);
+		System.out.println("Event ID:" + id);
 		return id;
 	}
-//fix bug
+
+	public static String getName(Scanner sc) {
+		System.out.print("Enter name: ");
+		String name = validOutput.getString(sc);
+		return name;
+	}
+
 	public static int numberOfAttendence(Scanner sc) {
-		int Attended = -1;
-		while (true) {
-			String input = String.valueOf(sc);
-			if (isValidInteger(input)) {
-				Attended = Integer.parseInt(input);
-				break;
-			} else {
-				System.out.println("Invalid input. Please enter a valid integer.");
-				System.out.print("Enter the number of attendees: ");
-				sc.next();
-			}
+		int Attended = 0; // Initialize to an invalid number to ensure it gets updated
+
+		System.out.print("Enter number of attendance: ");
+		try {
+			Attended = Integer.parseInt(validOutput.getString(sc)); // Try to parse the input
+		} catch (Exception e) {
+			System.out.println("Invalid input. Please enter a valid integer.");
+			e.printStackTrace();
+			sc.next();
 		}
 		return Attended;
 	}
 
-	// check input is the Integer
-	public static boolean isValidInteger(String str) {
-		try {
-			Integer.parseInt(str); // Attempt to parse the string to an Integer
-			return true; // If successful, the input is a valid integer
-		} catch (NumberFormatException e) {
-			return false; // If parsing fails, the input is not a valid integer
-		}
+	public static String getLocation(Scanner sc) {
+		System.out.print("Enter location: ");
+		String name = validOutput.getString(sc);
+		return name;
 	}
 
 	// Check input status yes or no
-	public static boolean inputStatus() {
-		Scanner sc = new Scanner(System.in);
+	public static boolean inputStatus(Scanner sc) {
 		String inputStatus;
 
 		while (true) {
 			System.out.println("Is this event active (y/n):");
-			inputStatus = sc.nextLine().trim().toLowerCase();
+			inputStatus = validOutput.getString(sc);
 
 			if (inputStatus.equals("y") || inputStatus.equals("yes")) {
-				System.out.println("You entered: " + inputStatus);
-				sc.close();
+				System.out.print("You entered: " + inputStatus);
+				
 				return true; // Event is active
 			} else if (inputStatus.equals("n") || inputStatus.equals("no")) {
-				System.out.println("You entered: " + inputStatus);
-				sc.close();
+				System.out.print("You entered: " + inputStatus);
+				
 				return false; // Event is not active
 			} else {
-				System.out.println("Invalid input. Please enter 'y', 'yes', 'n', or 'no'.");
-				sc.close();
+				System.out.print("Invalid input. Please enter 'y', 'yes', 'n', or 'no'.");
+				
 			}
 		}
 	}

@@ -3,22 +3,22 @@ package eventmanagement;
 import java.util.Scanner;
 
 import eventmanagement.service.Service;
+import eventmanagement.utils.validOutput;
 
 public class EventManagerment {
 	public static String FILE_NAME = "./src/data/EventsData.txt";
-
+	private static final Scanner sc = new Scanner(System.in);
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in); // Initialize Scanner
 		int choice;
+		
 		do {
 			Menu.displayMainMenu(); // Display menu options
 			System.out.print("Your select: ");
-			choice = (int) Menu.getEventOption(sc); // Get user choice
-			System.out.println(choice);
+			choice = Integer.parseInt(validOutput.getString(sc)); // Get user choice
 			// Process the choice
 			switch (choice) {
 			case 1:
-				Service.createEvent(sc);
+				Service.createEvent();
 				break;
 			case 2:
 				// Add logic for case 2
@@ -48,7 +48,5 @@ public class EventManagerment {
 				break;
 			}
 		} while (choice != 7); // Continue until user selects '7' to exit
-
-		sc.close(); // Close Scanner after exiting the loop
 	}
 }
