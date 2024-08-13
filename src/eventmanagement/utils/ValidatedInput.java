@@ -44,12 +44,11 @@ public class ValidatedInput {
 		String inputStatus;
 
 		while (true) {
-			System.out.println("Is this event active (y/n):");
+			System.out.print("Is this event active (y/n):");
 			inputStatus = validOutput.getString(sc);
 
 			if (inputStatus.equals("y") || inputStatus.equals("yes")) {
 				System.out.print("You entered: " + inputStatus);
-				
 				return true; // Event is active
 			} else if (inputStatus.equals("n") || inputStatus.equals("no")) {
 				System.out.print("You entered: " + inputStatus);
@@ -61,4 +60,5 @@ public class ValidatedInput {
 			}
 		}
 	}
-}
+}	
+	

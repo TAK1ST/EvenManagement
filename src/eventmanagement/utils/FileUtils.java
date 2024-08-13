@@ -1,5 +1,4 @@
 package eventmanagement.utils;
-
 import java.io.*;
 
 public class FileUtils {
@@ -25,5 +24,5 @@ public class FileUtils {
 			System.out.println("Error when save events to file.");
 			e.printStackTrace();
 		}
-	}
+	}	
 }
