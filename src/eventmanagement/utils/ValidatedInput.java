@@ -25,9 +25,8 @@ public class ValidatedInput {
 		System.out.print("Enter number of attendance: ");
 		try {
 			Attended = Integer.parseInt(validOutput.getString(sc)); // Try to parse the input
-		} catch (Exception e) {
+		} catch (NumberFormatException e) {
 			System.out.println("Invalid input. Please enter a valid integer.");
-			e.printStackTrace();
 			sc.next();
 		}
 		return Attended;
