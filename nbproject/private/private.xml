@@ -3,9 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/Code/learnJava/EventManagement/src/Utils/ValidatedInput.java</file>
-            <file>file:/E:/Code/learnJava/EventManagement/src/Menu/Menu.java</file>
-            <file>file:/E:/Code/learnJava/EventManagement/src/models/Events.java</file>
+            <file>file:/E:/Code/learnJava/EvenManagement/src/eventmanagement/service/Service.java</file>
+            <file>file:/E:/Code/learnJava/EvenManagement/src/eventmanagement/utils/ValidatedInput.java</file>
+            <file>file:/E:/Code/learnJava/EvenManagement/src/eventmanagement/utils/validOutput.java</file>
+            <file>file:/E:/Code/learnJava/EvenManagement/src/eventmanagement/utils/FileUtils.java</file>
+            <file>file:/E:/Code/learnJava/EvenManagement/src/eventmanagement/Menu.java</file>
+            <file>file:/E:/Code/learnJava/EvenManagement/src/eventmanagement/EventManagement.java</file>
         </group>
     </open-files>
 </project-private>

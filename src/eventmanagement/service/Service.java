@@ -21,10 +21,10 @@ public class Service {
 
         // Collect event details
         int id = ValidatedInput.getID();
-        String name = ValidatedInput.getName(sc);
+        String name = ValidatedInput.getName();
         LocalDate eventDate = DateUtil.inputEventDate(sc);
-        String location = ValidatedInput.getLocation(sc);
-        int numberOfAttendees = ValidatedInput.numberOfAttendence(sc);
+        String location = ValidatedInput.getLocation();
+        int numberOfAttendees = ValidatedInput.numberOfAttendence();
         boolean status = ValidatedInput.inputStatus(sc);
 
         // Create an Event object
@@ -32,14 +32,6 @@ public class Service {
 
         // Add the event to the database
         EVENT_DATABASE.add(newEvent);
-
-        // Print event details
-        System.out.println("Event ID: " + id);
-        System.out.println("Event Name: " + name);
-        System.out.println("Event Date: " + eventDate);
-        System.out.println("Event Location: " + location);
-        System.out.println("Number of Attendees: " + numberOfAttendees);
-        System.out.println("Event Status: " + status);
 
         // Save the updated event database
         Menu.saveToFile();

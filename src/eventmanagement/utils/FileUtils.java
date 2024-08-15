@@ -19,6 +19,7 @@ public class FileUtils {
         filename = "./src/" + filename;
         try (FileOutputStream fos = new FileOutputStream(filename); ObjectOutputStream oos = new ObjectOutputStream(fos)) {
             oos.writeObject(object);
+            System.out.println("saved sucessfully!!!");
             // No need to explicitly close the streams, try-with-resources handles it
         } catch (IOException e) {
             System.out.println("Error when save events to file.");
