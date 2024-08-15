@@ -4,8 +4,6 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class ValidatedInput {
-    // check get ID
-
     private static final Scanner sc = new Scanner(System.in);
 
     public static int getID() {

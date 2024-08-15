@@ -17,8 +17,9 @@ public class Service {
 
 // Method to create and save a new Event
     public static void createEvent() {
+        
         Scanner sc = new Scanner(System.in);
-
+        System.out.println("CREATE NEW EVENT");
         // Collect event details
         int id = ValidatedInput.getID();
         String name = ValidatedInput.getName();
@@ -36,5 +37,6 @@ public class Service {
         // Save the updated event database
         Menu.saveToFile();
     }
+    
 
 }

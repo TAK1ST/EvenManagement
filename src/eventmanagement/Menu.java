@@ -52,6 +52,31 @@ public class Menu {
         }
     }
 
+    public static void printListEvent() {
+
+        for (int i = 0; i < 100; i++) {
+            System.out.print("_");
+        }
+        System.out.println("");
+        System.out.println(
+                "id                  name                date"
+                + "                location             attendence"
+                + "          status");
+        for (int i = 0; i < 100; i++) {
+            System.out.print("_");
+        }
+        System.out.println("");
+        for (Events event : EVENT_DATABASE) {
+            System.out.println(event.getId() + validOutput.padSpaces(event.getId(), 24)
+                    + event.getName() + validOutput.padSpaces(event.getName(), 24)
+                    + event.getEventDate() + validOutput.padSpaces(event.getEventDateAsString(), 24)
+                    + event.getLocation() + validOutput.padSpaces(event.getLocation(), 24)
+                    + event.getNumber_of_attendees() + validOutput.padSpaces(Integer.toString(event.getNumber_of_attendees()), 24)
+                    + event.getStatus()+ validOutput.padSpaces(String.valueOf(event.getStatus()), 24)
+            );
+        }
+    }
+
     public static void saveToFile() {
         FileUtils.saveFileObject(filename, EVENT_DATABASE);
     }
