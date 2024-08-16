@@ -22,7 +22,8 @@ public class EventManagement {
                     break;
                 case 2:
                     // check Exit
-                    System.out.println("check Exits" + "");
+                    validOutput.clearScreen();
+                    Service.checkEventExist();
                     break;
                 case 3:
                     validOutput.clearScreen();

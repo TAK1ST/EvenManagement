@@ -13,12 +13,11 @@ public class Service {
 
     public static ArrayList<Events> EVENT_DATABASE = new ArrayList<>();
     public static String filename = "data/EventsData.txt";
-
-
+    public static final Scanner sc = new Scanner(System.in);
 // Method to create and save a new Event
+
     public static void createEvent() {
-        
-        Scanner sc = new Scanner(System.in);
+
         System.out.println("CREATE NEW EVENT");
         // Collect event details
         int id = ValidatedInput.getID();
@@ -26,9 +25,9 @@ public class Service {
         LocalDate eventDate = DateUtil.inputEventDate(sc);
         String location = ValidatedInput.getLocation();
         int numberOfAttendees = ValidatedInput.numberOfAttendence();
-        boolean status = ValidatedInput.inputStatus(sc);
+        String status = ValidatedInput.inputStatus();
 
-        // Create an Event object
+        // Create an Event objects
         Events newEvent = new Events(id, name, eventDate, location, numberOfAttendees, status);
 
         // Add the event to the database
@@ -37,6 +36,18 @@ public class Service {
         // Save the updated event database
         Menu.saveToFile();
     }
-    
+
+    public static void checkEventExist() {
+        System.out.print("Enter event name: ");
+        String subString = sc.nextLine();
+        for (Events event : EVENT_DATABASE) {
+            if (subString.equalsIgnoreCase(event.getName())) {
+                System.out.println("Event Exist");
+            }
+            else System.out.println("Event does not Exist");
+        }
+    }
+    //update tao them ham khi nhap sai -> nhap lai, 
+    // neu khach khong muon nhap van co the thoat ra ve lai menu
 
 }

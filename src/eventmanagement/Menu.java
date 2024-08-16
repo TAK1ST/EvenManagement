@@ -75,7 +75,7 @@ public class Menu {
                     + event.getEventDate() + validOutput.padSpaces(event.getEventDateAsString(), 20)
                     + event.getLocation() + validOutput.padSpaces(event.getLocation(), 20)
                     + event.getNumber_of_attendees() + validOutput.padSpaces(Integer.toString(event.getNumber_of_attendees()), 20)
-                    + event.getStatus() + validOutput.padSpaces(String.valueOf(event.getStatus()), 20)
+                    + event.getStatus() + validOutput.padSpaces(event.getStatus(), 20)
             );
         }
         for (int i = 0; i < 150; i++) {

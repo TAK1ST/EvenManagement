@@ -41,12 +41,16 @@ public class ValidatedInput {
 
     public static String getLocation() {
         System.out.print("Enter location: ");
-        String name = validOutput.getString(sc);
-        return name;
+            String location = validOutput.getString(sc);
+        if (location.length()< 5) {
+            System.out.println("location donot empty, please write address");
+            getLocation();
+            }
+        return location;
     }
 
     // Check input status yes or no
-    public static boolean inputStatus(Scanner sc) {
+    public static String inputStatus() {
         String inputStatus;
 
         while (true) {
@@ -57,12 +61,12 @@ public class ValidatedInput {
                 case "y":
                 case "yes":
                     System.out.println("You entered: " + inputStatus);
-                    return true; // Event is active
+                    return "Available"; // Event is active
                 case "n":
                 case "no":
                     System.out.println("You entered: " + inputStatus);
 
-                    return false; // Event is not active
+                    return "Not Available"; // Event is not active
                 default:
                     System.out.println("Invalid input. Please enter 'y', 'yes', 'n', or 'no'.");
                     break;
@@ -71,12 +75,5 @@ public class ValidatedInput {
 
     }
 
-    public static String status(boolean inputStatus) {
-        if (inputStatus == true) {
-            return "Available";
-        } else {
-            return "Not Available";
-        }
-    }
 
 }

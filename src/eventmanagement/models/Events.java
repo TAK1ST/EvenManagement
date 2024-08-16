@@ -12,9 +12,9 @@ public class Events implements Serializable {
     protected LocalDate eventDate;
     protected String location;
     protected int number_of_attendees;
-    protected boolean status;
+    protected String status;
 
-    public Events(int id, String name, LocalDate eventDate, String location, int number_of_attendees, boolean status) {
+    public Events(int id, String name, LocalDate eventDate, String location, int number_of_attendees, String status) {
         this.id = id;
         this.name = name;
         this.eventDate = eventDate;
@@ -68,11 +68,11 @@ public class Events implements Serializable {
         this.number_of_attendees = number_of_attendees;
     }
 
-    public boolean getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
