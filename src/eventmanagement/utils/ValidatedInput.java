@@ -4,9 +4,11 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class ValidatedInput {
+
     private static final Scanner sc = new Scanner(System.in);
 
     public static int getID() {
+
         int id;
         Random random = new Random();
         id = random.nextInt(100000);
@@ -17,16 +19,10 @@ public class ValidatedInput {
     public static String getName() {
         System.out.print("Enter name: ");
         String name = validOutput.getString(sc);
-        do {
-            if (name.length() < 5 )
-            {
-                System.out.println("Please enter event name at least 5 characters");
-                getName();
-            }
-            else break;
-            
-        } while(true);
-
+        while (name.length() < 5)
+        {
+            getName();
+        }
         return name;
     }
 

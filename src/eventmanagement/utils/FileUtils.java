@@ -23,18 +23,18 @@ public class FileUtils {
                 System.out.println("Error creating file: " + e.getMessage());
                 return null;
             }
-        }
-
-        // If file exists, try to load the object
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))) {
-            return ois.readObject();
-        } catch (EOFException e) {
-            // Handle the case where the file is empty or reached its end unexpectedly
-            System.out.println("File is empty or reached EOF unexpectedly: " + e.getMessage());
-            return null;
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-            return null;
+        } else {
+            // If file exists, try to load the object
+            try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))) {
+                return ois.readObject();
+            } catch (EOFException e) {
+                // Handle the case where the file is empty or reached its end unexpectedly
+                System.out.println("File is empty or reached EOF unexpectedly: " + e.getMessage());
+                return null;
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+                return null;
+            }
         }
     }
 
