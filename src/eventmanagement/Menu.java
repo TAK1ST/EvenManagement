@@ -70,7 +70,7 @@ public class Menu {
         }
         System.out.println("");
         for (Events event : EVENT_DATABASE) {
-            System.out.println(event.getId() + validOutput.padSpaces(event.getId(), 20)
+            System.out.println(event.getId() + validOutput.padSpaces(Integer.toString(event.getId()), 20)
                     + event.getName() + validOutput.padSpaces(event.getName(), 20)
                     + event.getEventDate() + validOutput.padSpaces(event.getEventDateAsString(), 20)
                     + event.getLocation() + validOutput.padSpaces(event.getLocation(), 20)
@@ -94,5 +94,4 @@ public class Menu {
             EVENT_DATABASE = new ArrayList<>();
         }
     }
-
 }

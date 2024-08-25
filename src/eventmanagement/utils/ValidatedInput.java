@@ -19,8 +19,7 @@ public class ValidatedInput {
     public static String getName() {
         System.out.print("Enter name: ");
         String name = validOutput.getString(sc);
-        while (name.length() < 5)
-        {
+        while (name.length() < 5) {
             getName();
         }
         return name;
@@ -41,11 +40,11 @@ public class ValidatedInput {
 
     public static String getLocation() {
         System.out.print("Enter location: ");
-            String location = validOutput.getString(sc);
-        if (location.length()< 5) {
+        String location = validOutput.getString(sc);
+        if (location.length() < 5) {
             System.out.println("location donot empty, please write address");
             getLocation();
-            }
+        }
         return location;
     }
 
@@ -72,8 +71,5 @@ public class ValidatedInput {
                     break;
             }
         }
-
     }
-
-
 }

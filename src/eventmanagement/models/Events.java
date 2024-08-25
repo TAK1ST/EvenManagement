@@ -23,8 +23,8 @@ public class Events implements Serializable {
         this.status = status;
     }
 
-    public String getId() {
-        return name;
+    public int getId() {
+        return id;
     }
 
     public void setId(int id) {

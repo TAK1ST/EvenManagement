@@ -28,12 +28,13 @@ public class EventManagement {
                 case 3:
                     validOutput.clearScreen();
                     //search Ìnformation event
-                    System.out.println("Search for event information by location.");
+                    Service.searchEvent();
                     break;
                 case 4:
                     validOutput.clearScreen();
                     //Update event
-                    System.out.println("Update event.");
+                    Service.updateEvent();
+                    
                     break;
                 case 5:
                     //save file

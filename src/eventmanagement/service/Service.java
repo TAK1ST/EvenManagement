@@ -8,6 +8,7 @@ import java.util.Scanner;
 import eventmanagement.models.Events;
 import eventmanagement.utils.DateUtil;
 import eventmanagement.utils.ValidatedInput;
+import eventmanagement.utils.validOutput;
 
 public class Service {
 
@@ -37,17 +38,105 @@ public class Service {
         Menu.saveToFile();
     }
 
+    public static String searchEvent() {
+        System.out.println("Enter part of the event name to search:");
+        String input = validOutput.getString(sc); // Get user input
+        StringBuilder result = new StringBuilder();
+
+        for (Events event : EVENT_DATABASE) {
+            if (event.getName().toLowerCase().contains(input.toLowerCase())) {
+                result.append(event.getName()).append("\n"); // Append event details to the result
+            }
+        }
+
+        if (result.length() > 0) {
+            System.out.println("Found events:\n" + result.toString()); // Print all found events
+            return result.toString();
+        } else {
+            System.out.println("No events found containing: " + input);
+            return null;
+        }
+    }
+
+    public static boolean checkExist(String eventName) {
+        for (Events event : EVENT_DATABASE) {
+            if (eventName.equalsIgnoreCase(event.getName())) {
+                return true; // Event exists
+            }
+        }
+        return false; // Event does not exist
+    }
+
     public static void checkEventExist() {
         System.out.print("Enter event name: ");
         String subString = sc.nextLine();
-        for (Events event : EVENT_DATABASE) {
-            if (subString.equalsIgnoreCase(event.getName())) {
-                System.out.println("Event Exist");
-            }
-            else System.out.println("Event does not Exist");
+        if (checkExist(subString)) {
+            System.out.println("Event Exist");
+        } else {
+            System.out.println("Event does not Exist");
         }
     }
-    //update tao them ham khi nhap sai -> nhap lai, 
-    // neu khach khong muon nhap van co the thoat ra ve lai menu
 
+    public static void updateEvent() {
+        int choice;
+        do {
+            System.out.println("1. Edit Event");
+            System.out.println("2. Delete Event");
+            System.out.println("3. Back to menu");
+            choice = Menu.getEventOption();
+            switch (choice) {
+                case 1:
+                    editEvent();
+                    break;
+                case 2:
+                    deleteEvent();
+                    break;
+                case 3:
+                    System.out.println("Exiting...");
+                    return; // Exits the updateEvent method and returns to the menu
+                default:
+                    System.out.println("Invalid choice. Please select 1, 2, or 3.");
+            }
+        } while (choice != 3);
+    }
+
+    public static void editEvent() {
+        System.out.println("Enter event name to edit or type 'back' to return to menu:");
+        String input = sc.next(); // Get user input
+        if ("back".equalsIgnoreCase(input)) {
+            return; // Exits editEvent method and returns to the previous menu
+        }
+
+        if (checkExist(input)) {
+            for (Events event : EVENT_DATABASE) {
+                if (input.equalsIgnoreCase(event.getName())) {
+                    System.out.println(event); // Print the event details
+                    // Add editing logic here
+                    break;
+                }
+            }
+        } else {
+            System.out.println("Event does not exist.");
+        }
+    }
+
+    public static void deleteEvent() {
+        System.out.println("Enter event name to delete or type 'back' to return to menu:");
+        String input = sc.next(); // Get user input
+        if ("back".equalsIgnoreCase(input)) {
+            return; // Exits deleteEvent method and returns to the previous menu
+        }
+
+        if (checkExist(input)) {
+            for (Events event : EVENT_DATABASE) {
+                if (event.getName().toLowerCase().contains(input.toLowerCase())) {
+                    System.out.println("Deleting event: " + event.getName());
+                    // Add deletion logic here
+                    break;
+                }
+            }
+        } else {
+            System.out.println("Event does not exist.");
+        }
+    }
 }
