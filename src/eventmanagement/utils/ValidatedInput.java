@@ -20,6 +20,7 @@ public class ValidatedInput {
         System.out.print("Enter name: ");
         String name = validOutput.getString(sc);
         while (name.length() < 5) {
+            System.out.println("Input at lease 5 characters, please");
             getName();
         }
         return name;

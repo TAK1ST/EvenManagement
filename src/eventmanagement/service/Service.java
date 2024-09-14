@@ -58,25 +58,6 @@ public class Service {
         }
     }
 
-    public static boolean checkExist(String eventName) {
-        for (Events event : EVENT_DATABASE) {
-            if (eventName.equalsIgnoreCase(event.getName())) {
-                return true; // Event exists
-            }
-        }
-        return false; // Event does not exist
-    }
-
-    public static void checkEventExist() {
-        System.out.print("Enter event name: ");
-        String subString = sc.nextLine();
-        if (checkExist(subString)) {
-            System.out.println("Event Exist");
-        } else {
-            System.out.println("Event does not Exist");
-        }
-    }
-
     public static void updateEvent() {
         int choice;
         do {
@@ -92,8 +73,8 @@ public class Service {
                     deleteEvent();
                     break;
                 case 3:
-                    System.out.println("Exiting...");
-                    return; // Exits the updateEvent method and returns to the menu
+                    System.out.println("Returning to the main menu...");
+                    return; // Exits the updateEvent method and returns to the main menu
                 default:
                     System.out.println("Invalid choice. Please select 1, 2, or 3.");
             }
@@ -101,17 +82,45 @@ public class Service {
     }
 
     public static void editEvent() {
-        System.out.println("Enter event name to edit or type 'back' to return to menu:");
+        System.out.println("Enter event name to edit or type 'back' to return to the menu:");
         String input = sc.next(); // Get user input
+        sc.nextLine(); // Consume the leftover newline
         if ("back".equalsIgnoreCase(input)) {
-            return; // Exits editEvent method and returns to the previous menu
+            return; // Exits the editEvent method and returns to the previous menu
         }
 
         if (checkExist(input)) {
             for (Events event : EVENT_DATABASE) {
                 if (input.equalsIgnoreCase(event.getName())) {
-                    System.out.println(event); // Print the event details
-                    // Add editing logic here
+                    System.out.println("Event found: " + event);
+
+                    // Prompt for new name
+                    System.out.print("New Name (leave blank to keep \"" + event.getName() + "\"): ");
+                    String newName = sc.nextLine();
+                    if (!newName.isEmpty()) {
+                        event.setName(newName);
+                    }
+
+                    // Prompt for new location
+                    System.out.print("New Location (leave blank to keep \"" + event.getLocation() + "\"): ");
+                    String newLocation = sc.nextLine();
+                    if (!newLocation.isEmpty()) {
+                        event.setLocation(newLocation);
+                    }
+
+                    // Prompt for new date
+                    System.out.print("New Date (leave blank to keep \"" + event.getEventDate() + "\"): ");
+                    String newDateInput = sc.nextLine();
+                    if (!newDateInput.isEmpty()) {
+                        LocalDate newDate = DateUtil.inputEventDate(sc);
+                        if (newDate != null) {
+                            event.setEventDate(newDate);
+                        } else {
+                            System.out.println("Invalid date format. Keeping original date.");
+                        }
+                    }
+
+                    System.out.println("Event updated successfully!");
                     break;
                 }
             }
@@ -121,22 +130,43 @@ public class Service {
     }
 
     public static void deleteEvent() {
-        System.out.println("Enter event name to delete or type 'back' to return to menu:");
+        System.out.println("Enter event name to delete or type 'back' to return to the menu:");
         String input = sc.next(); // Get user input
         if ("back".equalsIgnoreCase(input)) {
-            return; // Exits deleteEvent method and returns to the previous menu
+            return; // Exits the deleteEvent method and returns to the previous menu
         }
 
         if (checkExist(input)) {
             for (Events event : EVENT_DATABASE) {
                 if (event.getName().toLowerCase().contains(input.toLowerCase())) {
                     System.out.println("Deleting event: " + event.getName());
-                    // Add deletion logic here
+                    EVENT_DATABASE.remove(event); // Remove event from database
+                    System.out.println("Event deleted successfully!");
                     break;
                 }
             }
         } else {
             System.out.println("Event does not exist.");
+        }
+    }
+
+    public static boolean checkExist(String eventName) {
+        for (Events event : EVENT_DATABASE) {
+            if (event.getName().contains(eventName) || eventName.equalsIgnoreCase(event.getName())) {
+                return true; // Event exists
+            }
+        }
+        return false; // Event does not exist
+    }
+
+    public static void checkEventExist() {
+        Menu.printListEvent();
+        System.out.print("Enter event name: ");
+        String subString = sc.nextLine();
+        if (checkExist(subString)) {
+            System.out.println("Event Exist");
+        } else {
+            System.out.println("Event does not Exist");
         }
     }
 }

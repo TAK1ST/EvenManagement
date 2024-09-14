@@ -12,7 +12,7 @@ public class Events implements Serializable {
     protected LocalDate eventDate;
     protected String location;
     protected int number_of_attendees;
-    protected String status;
+    protected String status;    
 
     public Events(int id, String name, LocalDate eventDate, String location, int number_of_attendees, String status) {
         this.id = id;
